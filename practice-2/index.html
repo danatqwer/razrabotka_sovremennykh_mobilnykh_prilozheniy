@@ -179,7 +179,39 @@
             )
         }
 
-        function NoteCard({ content, date, important, completed }) {
+        function NoteCard({ index, content, date, important, completed }) {
+            const { tasks, setTasks } = React.useContext(DataContext);
+
+            const checkTask = () => {
+                document.getElementsByClassName("note-content")[index].style.backgroundColor = completed ? "#FC9F9F" : "#9FFC9F";
+                document.getElementsByClassName("date-box")[index].style.backgroundColor = completed ? "#F71616" : "#16F716";
+
+                let newCompleted = !completed;
+                tasks[index] = {
+                    content: content,
+                    date: date,
+                    important: important,
+                    completed: newCompleted
+                };
+                setTasks([...tasks]);
+            }
+
+            const editTask = () => {
+                let newContent = prompt("Edit content", content);
+                tasks[index] = {
+                    content: newContent,
+                    date: date,
+                    important: important,
+                    completed: completed
+                };
+                setTasks([...tasks]);
+            }
+
+            const removeTask = () => {
+                tasks.splice(index, 1);
+                setTasks([...tasks]);
+            }
+
             return (
                 <div className="note-card">
                     <div className="note-content">
@@ -187,9 +219,9 @@
                     </div>
                     <DateView date={date} />
                     <div className="note-actions">
-                        <img src="./assets/icons/check.svg" alt="check" />
-                        <img src="./assets/icons/mode_edit.svg" alt="edit" />
-                        <img src="./assets/icons/delete_sweep.svg" alt="delete" />
+                        <img onClick={checkTask} src="./assets/icons/check.svg" alt="check" />
+                        <img onClick={editTask} src="./assets/icons/mode_edit.svg" alt="edit" />
+                        <img onClick={removeTask} src="./assets/icons/delete_sweep.svg" alt="delete" />
                     </div>
                 </div>
             );
@@ -217,18 +249,22 @@
 
         function NoteList() {
             const { tasks } = React.useContext(DataContext);
+            let index = 0;
 
             return (
                 <div className="note-list">
-                    {tasks.map((note, i) => (
-                        <NoteCard
-                            key={i}
-                            content={note.content}
-                            date={note.date}
-                            important={note.important}
-                            completed={note.completed}
-                        />
-                    ))}
+                    {tasks.map((note, i) => {
+                        return (
+                            <NoteCard
+                                key={i}
+                                index={index++}
+                                content={note.content}
+                                date={note.date}
+                                important={note.important}
+                                completed={note.completed}
+                            />
+                        );
+                    })}
                 </div>
             );
         }
@@ -254,16 +290,19 @@
                 <div>
                     <input
                         type="date"
+                        className="date-input"
                         value={localDate}
                         onChange={(e) => handleChange("date", e.target.value)}
                     />
                     <input
                         type="time"
+                        className="start-time-input"
                         value={localStartTime}
                         onChange={(e) => handleChange("start", e.target.value)}
                     />
                     <input
                         type="time"
+                        className="end-time-input"
                         value={localEndTime}
                         onChange={(e) => handleChange("end", e.target.value)}
                     />
@@ -305,6 +344,13 @@
                 setNewNote("");
             }
 
+            const clearTask = () => {
+                document.getElementsByClassName("note-add__text")[0].value = "";
+                document.getElementsByClassName("date-input")[0].value = "";
+                document.getElementsByClassName("start-time-input")[0].value = "";
+                document.getElementsByClassName("end-time-input")[0].value = "";
+            }
+
             return (
                 <div className="note-add">
                     <input type="text" className="note-add__text" value={newNote} onChange={(e) => setNewNote(e.target.value)} />
@@ -315,9 +361,8 @@
                         onChange={handleDateChange} />
                     <div className="note-add__actions">
                         <button onClick={addTask}>Add</button>
-                        <button>Clear</button>
+                        <button onClick={clearTask}>Clear</button>
                     </div>
-
                 </div>
             );
         }
