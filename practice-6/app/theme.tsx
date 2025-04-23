@@ -1,14 +1,20 @@
-import { MD3LightTheme as LightTheme, MD3DarkTheme as DarkTheme } from "react-native-paper";
+import { Appearance } from "react-native";
+import { MD3LightTheme, MD3DarkTheme, Surface, MD3Colors } from "react-native-paper";
+import { ElevationLevels } from "react-native-paper/lib/typescript/types";
+
+const isLightTheme = Appearance.getColorScheme() === 'light';
+const defaultTheme = isLightTheme ? MD3LightTheme : MD3DarkTheme;
 
 const Theme = {
-    ...DarkTheme,
+    ...defaultTheme,
     colors: {
-        ...DarkTheme.colors,
-        primary: 'blue',
-        secondary: 'red',
+        ...defaultTheme.colors,
+        primary: "#0000FF",
+        secondary: "#FF00FF",
+        surfaceVariant: '#E0E0F0'
     },
     fonts: {
-        ...DarkTheme.fonts,
+        ...defaultTheme.fonts,
         default: {
             fontFamily: 'Quicksand'
         },
