@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "practice-5",
-    "slug": "practice-5",
+    "name": "practice-6",
+    "slug": "practice-6",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -31,6 +31,14 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Quicksand-Regular.ttf"
+          ]
         }
       ]
     ],
