@@ -1,22 +1,24 @@
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
 export default function Profile() {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image style={{ marginBottom: 8, borderRadius: 180 }} source={require('../../assets/images/profile-image.png')} />
-                <Text style={{ fontSize: 20 }}>Developer</Text>
+                <Image style={{ marginBottom: 8, borderRadius: 180 }} source={require('@/assets/images/profile_image.png')} />
+                <Text style={{ fontSize: 20 }}>Danat E.</Text>
             </View>
             <View style={styles.infoContainer}>
-                <Image source={require('../../assets/images/smartphone-icon.png')} />
+                <MaterialIcons name={"smartphone"} color={'#000000'} size={24}/>
+                <Image source={require('@/assets/images/smartphone_icon.png')} />
                 <Text style={styles.rightText}>+7 (123) 456-7890</Text>
             </View>
             <View style={styles.infoContainer}>
-                <Image source={require('../../assets/images/person-icon.png')} />
+                <MaterialIcons name={'person'} color={'#000000'} size={24}/>
                 <Text style={styles.rightText}>@username</Text>
             </View>
             <View style={styles.infoContainer}>
-                <Image source={require('../../assets/images/email-icon.png')} />
+                <MaterialIcons name={'email'} color={'#000000'} size={24}/>
                 <Text style={styles.rightText}>newmail@gmail.com</Text>
             </View>
         </View>
