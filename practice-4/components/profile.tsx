@@ -10,7 +10,6 @@ export default function Profile() {
             </View>
             <View style={styles.infoContainer}>
                 <MaterialIcons name={"smartphone"} color={'#000000'} size={24}/>
-                <Image source={require('@/assets/images/smartphone_icon.png')} />
                 <Text style={styles.rightText}>+7 (123) 456-7890</Text>
             </View>
             <View style={styles.infoContainer}>
