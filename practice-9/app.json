@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "practice-6",
-    "slug": "practice-6",
+    "name": "practice-9",
+    "slug": "practice-9",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "practice6",
+    "scheme": "practice9",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -17,7 +17,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.newbandana.practice6"
+      "package": "com.newbandana.practice9"
     },
     "web": {
       "bundler": "metro",
@@ -34,7 +34,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-sqlite"
     ],
     "experiments": {
       "typedRoutes": true
@@ -42,7 +43,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "a78b51d7-f31c-4739-8f3e-637e1697f485"
+        "projectId": "00a4654b-c336-4113-8ac6-00d667eaf919"
       }
     }
   }
